@@ -15,7 +15,18 @@
   },
   "extends": ["airbnb", "plugin:react/recommended"],
   "plugins": ["react", "@babel/plugin-syntax-jsx"],
-  "presets": ["@babel/preset-react"],
+  "presets": [
+   [
+      "@babel/preset-react",
+      {
+        "pragma": "dom", // default pragma is React.createElement (only in classic runtime)
+        "pragmaFrag": "DomFrag", // default is React.Fragment (only in classic runtime)
+        "throwIfNamespace": false, // defaults to true
+        "runtime": "classic" // defaults to classic
+        // "importSource": "custom-jsx-library" // defaults to react (only in automatic runtime)
+      }
+    ]
+  ],
   "rules": {
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
